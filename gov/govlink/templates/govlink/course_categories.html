@@ -1,0 +1,53 @@
+{% extends "govlink/base.html" %}
+{% block content  %}
+{% load staticfiles %}
+
+ <div class="page-title parallax parallax1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">                    
+                    <div class="page-title-heading">
+                        <h1 class="title">Course Categories</h1>
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a href="index-2.html">Home</a></li>
+                                <li>Course Categories</li>
+                            </ul>                   
+                        </div>
+                    </div><!-- /.page-title-captions --> 
+                    
+                </div><!-- /.col-md-12 -->  
+            </div><!-- /.row -->  
+        </div><!-- /.container -->                      
+    </div><!-- /.page-title -->
+
+<!-- Flat courses -->
+    <section class="flat-row pad-top50px pad-bottom90px">
+        
+        <div class="container">
+         
+            <div class="row">
+             {% for categories in categories %}
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="flat-courses">
+                        <div class="courses-thumbnail">
+                            <a href="{% url 'govlink:courselist' pk=categories.pk %}"><img src="{{ categories.logo.url }}" class = "img-fluid" alt="image" style="width:300px;height:200px"></a>
+                            <a class="courses-viewmore" href="course_single.html">{{ categories.category }}</a>
+                        </div>
+                        <div class="courses-content">
+                            <a href="{% url 'govlink:courselist' pk=categories.pk %}"><h6 class="courses-topic">{{ categories.category }}</h6></a>
+                            <p>{{ categories.creator }}</p>
+                        </div>
+                    </div><!-- /.flat-courses -->
+                </div><!-- /.col-md-3 -->
+               
+                   
+             {% endfor %}
+            </div><!-- /.row -->
+            
+            
+        </div><!-- /.container -->
+       
+    </section><!-- /.flat-row -->
+{% endblock  %}

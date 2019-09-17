@@ -1,0 +1,17 @@
+{% extends 'govlink/base.html' %}
+
+
+
+{% block content %}
+
+    <div class="container">
+    
+        <form action= "" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+            
+            <p><input type="submit" value="Submit"></p> 
+        </form>
+    </div>
+
+{% endblock %}

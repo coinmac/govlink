@@ -1,0 +1,63 @@
+{% extends "govlink/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+ <!-- Page title -->
+    <div class="page-title parallax parallax1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">                    
+                    <div class="page-title-heading">
+                        <h1 class="title">{{ category.category }}</h1>
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a href="index-2.html">Home</a></li>
+                                <li>All Course</li>
+                            </ul>                   
+                        </div>
+                    </div><!-- /.page-title-captions --> 
+                    
+                </div><!-- /.col-md-12 -->  
+            </div><!-- /.row -->  
+        </div><!-- /.container -->                      
+    </div><!-- /.page-title -->
+
+    <!-- Flat courses list -->
+    <section class="flat-row pad-top50px pad-bottom50px">
+    
+        <div class="container">
+            <div class="row">
+{% for post in category.post_set.all %}
+                <div class="col-md-12">
+                    <div class="course-list">
+                        <ul>
+                            <li>
+                                <div class="thumb">
+                                    <a href="course_single.html"><img src="{{ post.img.url }}" alt="image"></a>
+                                </div>
+                                <div class="list-content">
+                                    <div class="courses-content">
+                                        <h6 class="courses-topic"><a href="course_single.html">{{ post.coursename }}</a></h6>
+                                    </div>
+                                    <ul class="courses-meta">
+                                        <li class="courses-author"><a href="#">{{ post.author }}</a></li>
+                                        <li class="courses-follow"><a href="#">100</a></li>
+                                        <li class="courses-comment"><a href="#">5</a></li>
+                                    </ul>
+                                    <div class="content">
+                                        <p>{{post.content|truncatewords:30}}  </p>
+                                    </div>
+                                    <div class="price"><p>$ 256</p></div>
+                                </div>
+                            </li>
+                            <li>
+                                
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+            {% endfor %}
+        </div><!-- /.container -->
+    </section><!-- /.flat-row -->
+   
+
+{% endblock  %}
